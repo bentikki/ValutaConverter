@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Views.HistoricalDataActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="14dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="2dp">
+
+        <TextView
+            android:id="@+id/valutaHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:text="Selected Valuta"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editTextValutaDKK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:imeOptions="actionDone"
+
+            android:inputType="text"
+            android:hint="DKK" />
+
+        <EditText
+            android:id="@+id/editTextValutaTarget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:imeOptions="actionDone"
+
+            android:inputType="text"
+            android:hint="Target Valuta" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="413dp"
+        android:layout_height="419dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.306">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,4 +20,5 @@ public interface CurrencyDAO {
      * @return List<Rate> of current currency rates.
      */
     ArrayList<Rate> getCurrentRates();
+    Rate getRateByName(String valutaName);
 }

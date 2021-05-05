@@ -6,20 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".Views.CurrencyActivity">
 
-    <TextView
-        android:id="@+id/textView"
+
+    <LinearLayout
+        android:id="@+id/headingLayout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:paddingTop="50dp"
-        android:text="Nuværende valuta kurser"
-        android:textAlignment="center"
-        android:textSize="30sp" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/headingTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:text="Nuværende valuta kurser"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/subheadingTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="(Relativt til DKK)"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="italic"/>
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/valutaSelectListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/headingLayout"
         tools:layout_editor_absoluteX="0dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
