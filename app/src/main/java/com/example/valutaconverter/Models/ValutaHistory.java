@@ -9,4 +9,12 @@ public class ValutaHistory {
         this.date = date;
         this.valutaRate = valutaRate;
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public Rate getValutaRate() {
+        return valutaRate;
+    }
 }

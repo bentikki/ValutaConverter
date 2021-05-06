@@ -20,5 +20,21 @@ public interface CurrencyDAO {
      * @return List<Rate> of current currency rates.
      */
     ArrayList<Rate> getCurrentRates();
+
+    /**
+     * Returns the rate object, matching the provided name.
+     *
+     * @param valutaName String containing valuta code, for the requested Rate object.
+     * @return Rate Where Rate.Name matches the provided String.
+     */
     Rate getRateByName(String valutaName);
+
+    /**
+     * Returns the historical rates, from provided Rate object, as ArrayList<ValutaHistory>.
+     *
+     * @param rate The valuta rate of whcih historical data is needed.
+     * @return List<ValutaHistory> Containing historical data.
+     */
+    ArrayList<ValutaHistory> getHistoricalRates(Rate rate);
+
 }

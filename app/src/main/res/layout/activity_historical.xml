@@ -6,66 +6,77 @@
     android:layout_height="match_parent"
     tools:context=".Views.HistoricalDataActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingHorizontal="10dp"
-        android:paddingVertical="14dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="2dp">
+        android:padding="10dp"
+        android:fillViewport="false">
 
-        <TextView
-            android:id="@+id/valutaHeading"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10sp"
-            android:text="Selected Valuta"
-            android:textSize="20sp" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/editTextValutaDKK"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="14dp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="2dp">
 
-            android:focusableInTouchMode="true"
-            android:focusable="true"
-            android:imeOptions="actionDone"
+                <TextView
+                    android:id="@+id/valutaHeading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10sp"
+                    android:text="Selected Valuta"
+                    android:textSize="20sp" />
 
-            android:inputType="text"
-            android:hint="DKK" />
+                <EditText
+                    android:id="@+id/editTextValutaDKK"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:ems="10"
 
-        <EditText
-            android:id="@+id/editTextValutaTarget"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
+                    android:focusableInTouchMode="true"
+                    android:focusable="true"
+                    android:imeOptions="actionDone"
 
-            android:focusableInTouchMode="true"
-            android:focusable="true"
-            android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:hint="DKK" />
 
-            android:inputType="text"
-            android:hint="Target Valuta" />
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/editTextValutaTarget"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
 
-    <ScrollView
-        android:layout_width="413dp"
-        android:layout_height="419dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.306">
+                    android:focusableInTouchMode="true"
+                    android:focusable="true"
+                    android:imeOptions="actionDone"
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+                    android:inputType="text"
+                    android:hint="Target Valuta" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/historicalListView"
+                android:layout_width="413dp"
+                android:layout_height="419dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </ScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

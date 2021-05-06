@@ -4,6 +4,7 @@ import com.example.valutaconverter.Models.CurrencyDAO;
 import com.example.valutaconverter.Models.CurrencyMock;
 import com.example.valutaconverter.Models.DaoFactory;
 import com.example.valutaconverter.Models.Rate;
+import com.example.valutaconverter.Models.ValutaHistory;
 
 import java.util.ArrayList;
 
@@ -103,6 +104,11 @@ public class HistoricalDataPresenter extends PresenterBase{
 
                 ((HistoricalViewContract)this.view).updateTargetEditText(String.valueOf(valueResult));
             }
+            catch (NumberFormatException e){
+                this.showViewError("The input is not a valid number.");
+                ((HistoricalViewContract)this.view).updateTargetEditText("");
+                ((HistoricalViewContract)this.view).updateOriginalEditText("");
+            }
             catch(Exception e){
                 this.showViewError("An unexpected error occured.");
             }
@@ -139,6 +145,11 @@ public class HistoricalDataPresenter extends PresenterBase{
 
                 ((HistoricalViewContract)this.view).updateOriginalEditText(String.valueOf(valueResult));
             }
+            catch (NumberFormatException e){
+                this.showViewError("The input is not a valid number.");
+                ((HistoricalViewContract)this.view).updateTargetEditText("");
+                ((HistoricalViewContract)this.view).updateOriginalEditText("");
+            }
             catch(Exception e){
                 this.showViewError("An unexpected error occured.");
             }
@@ -153,5 +164,39 @@ public class HistoricalDataPresenter extends PresenterBase{
 
     }
 
+    /**
+     * Returns historical data from provided list
+     *
+     * Provide with requested rate, or provide with null and use this.selectedRate.
+     *
+     * @param requestedRate The rate of which historical data is requested.
+     * @return ArrayList<ValutaHistory> with historical data from provided rate
+     */
+    private ArrayList<ValutaHistory> getValutaHistory(Rate requestedRate){
+
+        if(requestedRate == null){
+            requestedRate = this.selectedRate;
+        }
+
+        return this.dao.getHistoricalRates(requestedRate);
+    }
+
+    /**
+     * Calls getValutaHistory() with this.selectedRate.
+     * Throws error if this.selectedRate has not been set.
+     *
+     * @return ArrayList<ValutaHistory> with historical data from provided rate
+     */
+    public ArrayList<ValutaHistory> getValutaHistory(){
+
+        try{
+            if(this.selectedRate == null) throw new NullPointerException();
+        }
+        catch (NullPointerException e){
+            this.showViewError("The selectedRate has not been set.");
+        }
+
+        return this.getValutaHistory(this.selectedRate);
+    }
 
 }

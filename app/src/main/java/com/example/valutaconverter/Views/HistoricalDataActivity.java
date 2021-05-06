@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.valutaconverter.Models.Rate;
+import com.example.valutaconverter.Models.ValutaHistory;
 import com.example.valutaconverter.Presenters.HistoricalDataPresenter;
 import com.example.valutaconverter.R;
 
@@ -55,6 +56,16 @@ public class HistoricalDataActivity extends AppCompatActivity implements Histori
         valutaHeading.setText(selectedValuta.getName() + " - " + selectedValuta.getCurrentRate());
 
         editTextValutaTarget.setHint(selectedValuta.getName());
+
+        //Get initial historical data list
+        ArrayList<ValutaHistory> valutaHistoryList = this.presenter.getValutaHistory();
+
+        // Get Rate View Adaptor
+        HistoricalListAdapter historicalListAdapter = new HistoricalListAdapter(this, valutaHistoryList);
+
+        // Implement Adaptor to View
+        ListView historicalListView = (ListView) findViewById(R.id.historicalListView);
+        historicalListView.setAdapter(historicalListAdapter);
 
 
         // Event listening
