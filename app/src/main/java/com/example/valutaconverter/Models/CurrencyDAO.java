@@ -1,5 +1,8 @@
 package com.example.valutaconverter.Models;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,5 +39,15 @@ public interface CurrencyDAO {
      * @return List<ValutaHistory> Containing historical data.
      */
     ArrayList<ValutaHistory> getHistoricalRates(Rate rate);
+
+    /**
+     * Returns the suplied amount, converted to new valuta value by exchange rate.
+     *
+     * @param rateFrom The rate to convert from.
+     * @param rateTo The rate to convert to.
+     * @param amount The amount to convert.
+     * @return Rate Where Rate.Name matches the provided String.
+     */
+    Double getExchanged(Rate rateFrom, Rate rateTo, Double amount);
 
 }

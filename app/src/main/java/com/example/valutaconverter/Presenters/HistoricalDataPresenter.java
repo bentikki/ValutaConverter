@@ -94,13 +94,11 @@ public class HistoricalDataPresenter extends PresenterBase{
 
             try{
                 double valueToExchange;
-                double valueExchangeRate;
                 double valueResult;
-
                 valueToExchange = Double.parseDouble(newValue);
-                valueExchangeRate = this.selectedRate.getCurrentRate();
 
-                valueResult = valueToExchange / valueExchangeRate;
+                Rate originalRate = this.dao.getRateByName("DKK");
+                valueResult = this.dao.getExchanged(originalRate, this.selectedRate, valueToExchange);
 
                 ((HistoricalViewContract)this.view).updateTargetEditText(String.valueOf(valueResult));
             }
@@ -135,13 +133,11 @@ public class HistoricalDataPresenter extends PresenterBase{
 
             try{
                 double valueToExchange;
-                double valueExchangeRate;
                 double valueResult;
-
                 valueToExchange = Double.parseDouble(newValue);
-                valueExchangeRate = this.selectedRate.getCurrentRate();
 
-                valueResult = valueToExchange * valueExchangeRate;
+                Rate originalRate = this.dao.getRateByName("USD");
+                valueResult = this.dao.getExchanged(this.selectedRate, originalRate, valueToExchange);
 
                 ((HistoricalViewContract)this.view).updateOriginalEditText(String.valueOf(valueResult));
             }

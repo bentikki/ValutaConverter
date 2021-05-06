@@ -1,7 +1,16 @@
 package com.example.valutaconverter.Models;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * CurrencyDAO that returns Mock currency data.
@@ -21,7 +30,7 @@ public class CurrencyMock implements CurrencyDAO{
         return this.currencyRates;
     }
 
-    public CurrencyMock(){
+    public CurrencyMock() {
         ArrayList<Rate> listOfMockRates = new ArrayList<>();
 
         // Add mock data rates.
@@ -30,7 +39,10 @@ public class CurrencyMock implements CurrencyDAO{
         listOfMockRates.add(new Rate("USD", 6.20));
         listOfMockRates.add(new Rate("CNY", 0.96));
 
-        this.currencyRates = listOfMockRates;
+        //this.currencyRates = listOfMockRates;
+
+        CurrencyDAO dao = new CurrencyLayerAPI();
+        this.currencyRates = dao.getCurrentRates();
 
         ArrayList<ValutaHistory> listOfMockValutaHistories = new ArrayList<>();
 
@@ -93,7 +105,6 @@ public class CurrencyMock implements CurrencyDAO{
         return selectedValutaHistories;
     }
 
-
     /**
      * Returns historical data from provided rate.
      *
@@ -111,6 +122,26 @@ public class CurrencyMock implements CurrencyDAO{
         historicalData.add(new ValutaHistory("01/01/2021", currencyRate));
 
         return historicalData;
+    }
+
+    @Override
+    public Double getExchanged(Rate rateFrom, Rate rateTo, Double amount) {
+
+        double valueToExchange;
+        double valueExchangeRate;
+        double valueResult;
+
+        valueToExchange = amount;
+
+        if(rateFrom.getCurrentRate() < rateTo.getCurrentRate()){
+            valueExchangeRate = rateTo.getCurrentRate();
+            valueResult = valueToExchange / valueExchangeRate;
+        }else{
+            valueExchangeRate = rateFrom.getCurrentRate();
+            valueResult = valueToExchange * valueExchangeRate;
+        }
+
+        return valueResult;
     }
 
 }
