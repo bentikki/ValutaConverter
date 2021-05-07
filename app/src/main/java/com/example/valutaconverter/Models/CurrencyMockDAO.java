@@ -20,8 +20,9 @@ import java.util.Scanner;
  * @version 1.0
  * @since 1.0
  */
-public class CurrencyMock implements CurrencyDAO{
+public class CurrencyMockDAO implements CurrencyDAO{
 
+    private final String ORIGIN_CURRENCY = "DKK";
     private ArrayList<Rate> currencyRates;
     private ArrayList<ValutaHistory> historicalRates;
 
@@ -30,7 +31,7 @@ public class CurrencyMock implements CurrencyDAO{
         return this.currencyRates;
     }
 
-    public CurrencyMock() {
+    public CurrencyMockDAO() {
         ArrayList<Rate> listOfMockRates = new ArrayList<>();
 
         // Add mock data rates.
@@ -39,10 +40,7 @@ public class CurrencyMock implements CurrencyDAO{
         listOfMockRates.add(new Rate("USD", 6.20));
         listOfMockRates.add(new Rate("CNY", 0.96));
 
-        //this.currencyRates = listOfMockRates;
-
-        CurrencyDAO dao = new CurrencyLayerAPI();
-        this.currencyRates = dao.getCurrentRates();
+        this.currencyRates = listOfMockRates;
 
         ArrayList<ValutaHistory> listOfMockValutaHistories = new ArrayList<>();
 
@@ -142,6 +140,11 @@ public class CurrencyMock implements CurrencyDAO{
         }
 
         return valueResult;
+    }
+
+    @Override
+    public Rate getOriginRate() {
+        return this.getRateByName(ORIGIN_CURRENCY);
     }
 
 }

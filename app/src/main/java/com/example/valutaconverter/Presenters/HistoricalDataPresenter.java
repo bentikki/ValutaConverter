@@ -1,7 +1,5 @@
 package com.example.valutaconverter.Presenters;
 
-import com.example.valutaconverter.Models.CurrencyDAO;
-import com.example.valutaconverter.Models.CurrencyMock;
 import com.example.valutaconverter.Models.DaoFactory;
 import com.example.valutaconverter.Models.Rate;
 import com.example.valutaconverter.Models.ValutaHistory;
@@ -32,7 +30,6 @@ public class HistoricalDataPresenter extends PresenterBase{
     }
 
     private Rate selectedRate;
-    private CurrencyDAO dao;
 
     public Rate getSelectedRate() {
         return selectedRate;
@@ -97,7 +94,7 @@ public class HistoricalDataPresenter extends PresenterBase{
                 double valueResult;
                 valueToExchange = Double.parseDouble(newValue);
 
-                Rate originalRate = this.dao.getRateByName("DKK");
+                Rate originalRate = this.getOriginRate();
                 valueResult = this.dao.getExchanged(originalRate, this.selectedRate, valueToExchange);
 
                 ((HistoricalViewContract)this.view).updateTargetEditText(String.valueOf(valueResult));
@@ -136,7 +133,7 @@ public class HistoricalDataPresenter extends PresenterBase{
                 double valueResult;
                 valueToExchange = Double.parseDouble(newValue);
 
-                Rate originalRate = this.dao.getRateByName("USD");
+                Rate originalRate = this.getOriginRate();
                 valueResult = this.dao.getExchanged(this.selectedRate, originalRate, valueToExchange);
 
                 ((HistoricalViewContract)this.view).updateOriginalEditText(String.valueOf(valueResult));

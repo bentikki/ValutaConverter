@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="30dp"
-            android:text="Nuværende valuta kurser"
+            android:text="Current exchange rates"
             android:textAlignment="center"
             android:textSize="30sp" />
 
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="(Relativt til DKK)"
+            android:text="(Relativt til ORIGIN)"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="italic"/>

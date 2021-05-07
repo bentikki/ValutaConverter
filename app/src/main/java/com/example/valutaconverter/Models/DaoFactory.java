@@ -2,10 +2,11 @@ package com.example.valutaconverter.Models;
 
 public class DaoFactory {
 
-    public static CurrencyDAO createDAO(){
+    private static final CurrencyDAO DAO_IN_USE = new CurrencyLayerApiDAO();
 
+    public static CurrencyDAO createDAO(){
         CurrencyDAO dataAccessObjectInUse;
-        dataAccessObjectInUse = new CurrencyMock();
+        dataAccessObjectInUse = DAO_IN_USE;
 
         return dataAccessObjectInUse;
     }

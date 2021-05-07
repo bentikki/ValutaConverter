@@ -32,6 +32,10 @@ public class CurrencyActivity extends AppCompatActivity implements CurrencyPrese
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Set origin text
+        TextView subheadingTextView = findViewById(R.id.subheadingTextView);
+        subheadingTextView.setText("(Relative to " + presenter.getOriginRate().getName().toUpperCase() + ")");
+
         // Get data objects
         ArrayList<Rate> rateList = this.presenter.getCurrencyRates();
 

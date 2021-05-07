@@ -1,7 +1,5 @@
 package com.example.valutaconverter.Presenters;
 
-import com.example.valutaconverter.Models.CurrencyDAO;
-import com.example.valutaconverter.Models.CurrencyMock;
 import com.example.valutaconverter.Models.DaoFactory;
 import com.example.valutaconverter.Models.Rate;
 
@@ -31,7 +29,6 @@ public class CurrencyPresenter extends PresenterBase {
         void navigateToHistoricalPage(Rate rate);
     }
 
-    private CurrencyDAO dao;
     private ArrayList<Rate> currencyRates;
 
     /**
@@ -46,11 +43,10 @@ public class CurrencyPresenter extends PresenterBase {
     public CurrencyPresenter(HomeViewContract homeView){
         this.view = homeView;
 
-        // Set DAO as Mock
+        // Set DAO
         this.dao = DaoFactory.createDAO();
         this.currencyRates = this.dao.getCurrentRates();
     }
-
 
     /**
      * Gets the homeView to show historical data, from provided currency code.

@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,7 +25,7 @@ public class HistoricalDataActivity extends AppCompatActivity implements Histori
 
     // Element binding objects
     private TextView valutaHeading;
-    private EditText editTextValutaDKK, editTextValutaTarget;
+    private EditText editTextValutaOrigin, editTextValutaTarget;
 
 
     public HistoricalDataActivity(){
@@ -48,7 +46,7 @@ public class HistoricalDataActivity extends AppCompatActivity implements Histori
 
         // Bind from view
         valutaHeading = (TextView) findViewById(R.id.valutaHeading);
-        editTextValutaDKK = (EditText) findViewById(R.id.editTextValutaDKK);
+        editTextValutaOrigin = (EditText) findViewById(R.id.editTextValutaOrigin);
         editTextValutaTarget = (EditText) findViewById(R.id.editTextValutaTarget);
 
         // Set inital statics
@@ -56,6 +54,7 @@ public class HistoricalDataActivity extends AppCompatActivity implements Histori
         valutaHeading.setText(selectedValuta.getName() + " - " + selectedValuta.getCurrentRate());
 
         editTextValutaTarget.setHint(selectedValuta.getName());
+        editTextValutaOrigin.setHint(presenter.getOriginRate().getName());
 
         //Get initial historical data list
         ArrayList<ValutaHistory> valutaHistoryList = this.presenter.getValutaHistory();
@@ -69,11 +68,11 @@ public class HistoricalDataActivity extends AppCompatActivity implements Histori
 
 
         // Event listening
-        editTextValutaDKK.addTextChangedListener(new TextWatcher() {
+        editTextValutaOrigin.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(editTextValutaDKK.hasFocus()){
+                if(editTextValutaOrigin.hasFocus()){
                     presenter.originalTextChanged(s.toString());
                 }
             }
@@ -128,7 +127,7 @@ public class HistoricalDataActivity extends AppCompatActivity implements Histori
 
     @Override
     public void updateOriginalEditText(String updateValue) {
-        this.editTextValutaDKK.setText(updateValue);
+        this.editTextValutaOrigin.setText(updateValue);
     }
 
     @Override

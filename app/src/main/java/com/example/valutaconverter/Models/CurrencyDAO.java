@@ -50,4 +50,10 @@ public interface CurrencyDAO {
      */
     Double getExchanged(Rate rateFrom, Rate rateTo, Double amount);
 
+    /**
+     * Returns the rate which is used as basis.
+     *
+     * @return Rate object used as basis rate.
+     */
+    Rate getOriginRate();
 }
