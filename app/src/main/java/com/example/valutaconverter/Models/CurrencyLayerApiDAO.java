@@ -28,13 +28,6 @@ public class CurrencyLayerApiDAO implements CurrencyDAO{
     private ArrayList<Rate> currencyRates;
     private CurrencyApiFixer currencyAPI = new CurrencyApiFixer();
 
-
-    // essential URL structure is built using constants
-    public static final String ACCESS_KEY = "API_KEY_HERE";
-    public static final String BASE_URL = "http://data.fixer.io/api/";
-    public static final String ENDPOINT = "latest";
-    public static final String URL_PARAMS = "&symbols=USD,EUR,DKK,CNY,SEK,NOK,BTC,CAD";
-
     @Override
     public ArrayList<Rate> getCurrentRates() {
 
